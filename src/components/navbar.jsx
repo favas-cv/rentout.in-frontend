@@ -28,7 +28,7 @@ const Navbar = () => {
     <nav className="flex items-center justify-between px-8 py-4 bg-white border-b border-gray-100 sticky top-0 z-50">
       {/* Logo */}
       <Link to="/">
-        <div className="text-xl font-bold tracking-tight text-[#756477]">Rentout.in</div>
+        <div className="text-xl font-bold tracking-tight text-[#756477]">Rentout.india</div>
       </Link>
 
       {/* Search Bar */}
