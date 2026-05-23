@@ -1,0 +1,91 @@
+<svg width="100%" viewBox="0 0 680 680" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>Rentout chatbot</title>
+<desc>Friendly robot sitting in a blue armchair with a laptop, plant, and coffee mug</desc>
+<defs>
+<style>
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes blink{0%,88%,100%{transform:scaleY(1)}92%{transform:scaleY(0.08)}}
+@keyframes type1{0%,100%{opacity:1}33%{opacity:0.2}}
+@keyframes type2{0%,33%,100%{opacity:0.2}66%{opacity:1}}
+@keyframes type3{0%,66%,100%{opacity:0.2}33%{opacity:0.2}83%{opacity:1}100%{opacity:0.2}}
+@keyframes steam{0%{transform:translateY(0) scaleX(1);opacity:0.7}100%{transform:translateY(-14px) scaleX(1.4);opacity:0}}
+@keyframes bubble{0%{opacity:0;transform:scale(0.6)}100%{opacity:1;transform:scale(1)}}
+@keyframes screenGlow{0%,100%{opacity:0.7}50%{opacity:1}}
+.bot-float{animation:float 3s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.eye-l{animation:blink 3.5s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.eye-r{animation:blink 3.5s ease-in-out infinite 0.08s;transform-box:fill-box;transform-origin:center}
+.dot1{animation:type1 1.2s ease-in-out infinite}
+.dot2{animation:type2 1.2s ease-in-out infinite}
+.dot3{animation:type3 1.2s ease-in-out infinite}
+.steam1{animation:steam 1.8s ease-out infinite}
+.steam2{animation:steam 1.8s ease-out infinite 0.6s}
+.bubble-in{animation:bubble 0.5s cubic-bezier(0.34,1.56,0.64,1) both}
+.screen{animation:screenGlow 2s ease-in-out infinite}
+</style>
+</defs>
+<circle cx="340" cy="330" r="270" fill="#C8D4F0"/>
+<circle cx="340" cy="330" r="230" fill="#D8E2F8"/>
+<rect x="190" y="310" width="300" height="180" rx="40" fill="#5B6FBF"/>
+<rect x="205" y="430" width="270" height="90" rx="20" fill="#6B7FCF"/>
+<rect x="178" y="360" width="55" height="140" rx="28" fill="#5060AF"/>
+<rect x="447" y="360" width="55" height="140" rx="28" fill="#5060AF"/>
+<rect x="215" y="325" width="250" height="80" rx="28" fill="#6B7FCF" opacity="0.5"/>
+<g class="bot-float">
+<rect x="278" y="350" width="124" height="110" rx="28" fill="white"/>
+<rect x="278" y="350" width="124" height="110" rx="28" fill="none" stroke="#1A2340" stroke-width="3"/>
+<path d="M300 390 Q340 395 380 390" fill="none" stroke="#1A2340" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="278" cy="375" r="12" fill="white" stroke="#1A2340" stroke-width="3"/>
+<circle cx="402" cy="375" r="12" fill="white" stroke="#1A2340" stroke-width="3"/>
+<rect x="240" y="370" width="42" height="90" rx="21" fill="white" stroke="#1A2340" stroke-width="3"/>
+<rect x="398" y="370" width="42" height="90" rx="21" fill="white" stroke="#1A2340" stroke-width="3"/>
+<ellipse cx="261" cy="462" rx="18" ry="12" fill="white" stroke="#1A2340" stroke-width="2.5"/>
+<ellipse cx="419" cy="462" rx="18" ry="12" fill="white" stroke="#1A2340" stroke-width="2.5"/>
+<path d="M252 280 Q248 230 290 200 Q340 178 390 200 Q430 220 430 280 Q428 316 400 330 Q370 345 340 345 Q308 345 278 330 Q252 316 252 280Z" fill="white" stroke="#1A2340" stroke-width="3"/>
+<line x1="340" y1="178" x2="340" y2="210" stroke="#1A2340" stroke-width="4" stroke-linecap="round"/>
+<circle cx="340" cy="170" r="12" fill="#1A2340"/>
+<circle cx="340" cy="170" r="6" fill="#5B6FBF"/>
+<rect x="268" y="228" width="144" height="90" rx="28" fill="#1A2340"/>
+<g class="eye-l"><ellipse cx="307" cy="265" rx="18" ry="20" fill="#7BE8FF"/><ellipse cx="307" cy="265" rx="10" ry="12" fill="#A8F4FF"/></g>
+<g class="eye-r"><ellipse cx="373" cy="265" rx="18" ry="20" fill="#7BE8FF"/><ellipse cx="373" cy="265" rx="10" ry="12" fill="#A8F4FF"/></g>
+<path d="M316 298 Q340 316 364 298" fill="none" stroke="#7BE8FF" stroke-width="3.5" stroke-linecap="round"/>
+<rect x="247" y="258" width="22" height="28" rx="11" fill="white" stroke="#1A2340" stroke-width="3"/>
+<rect x="411" y="258" width="22" height="28" rx="11" fill="white" stroke="#1A2340" stroke-width="3"/>
+</g>
+<ellipse cx="340" cy="530" rx="200" ry="28" fill="#C8935A"/>
+<ellipse cx="340" cy="524" rx="200" ry="28" fill="#D9A468"/>
+<rect x="240" y="548" width="14" height="55" rx="6" fill="#A06838" transform="rotate(-8 240 548)"/>
+<rect x="424" y="548" width="14" height="55" rx="6" fill="#A06838" transform="rotate(8 424 548)"/>
+<rect x="290" y="550" width="14" height="50" rx="6" fill="#A06838" transform="rotate(4 290 550)"/>
+<rect x="374" y="550" width="14" height="50" rx="6" fill="#A06838" transform="rotate(-4 374 550)"/>
+<rect x="265" y="496" width="150" height="30" rx="5" fill="#9EAAB8"/>
+<rect x="265" y="496" width="150" height="30" rx="5" fill="none" stroke="#7A8898" stroke-width="1.5"/>
+<circle cx="340" cy="511" r="8" fill="#B8C4D2"/>
+<circle cx="340" cy="511" r="4" fill="#9EAAB8"/>
+<rect x="275" y="430" width="130" height="72" rx="6" fill="#7A8898"/>
+<rect x="280" y="435" width="120" height="60" rx="4" fill="#B8C4D2" class="screen"/>
+<rect x="287" y="442" width="60" height="8" rx="3" fill="#5B6FBF" opacity="0.7"/>
+<rect x="287" y="454" width="44" height="6" rx="3" fill="#5B6FBF" opacity="0.4"/>
+<rect x="287" y="464" width="52" height="6" rx="3" fill="#5B6FBF" opacity="0.4"/>
+<rect x="268" y="494" width="144" height="6" rx="3" fill="#7A8898"/>
+<rect x="154" y="488" width="42" height="40" rx="8" fill="white" stroke="#DDD" stroke-width="1.5"/>
+<ellipse cx="175" cy="490" rx="19" ry="5" fill="#8B6343"/>
+<ellipse cx="168" cy="468" rx="14" ry="22" fill="#4A9140" transform="rotate(-20 168 468)"/>
+<ellipse cx="183" cy="462" rx="13" ry="20" fill="#5BA050" transform="rotate(15 183 462)"/>
+<ellipse cx="175" cy="455" rx="10" ry="18" fill="#4A9140" transform="rotate(-5 175 455)"/>
+<line x1="165" y1="480" x2="160" y2="454" stroke="#3A7030" stroke-width="1" stroke-linecap="round"/>
+<line x1="180" y1="475" x2="185" y2="450" stroke="#3A7030" stroke-width="1" stroke-linecap="round"/>
+<rect x="482" y="492" width="38" height="36" rx="6" fill="#5B6FBF"/>
+<rect x="482" y="492" width="38" height="36" rx="6" fill="none" stroke="#4A5AAF" stroke-width="1.5"/>
+<path d="M520 500 Q538 500 538 510 Q538 520 520 520" fill="none" stroke="#4A5AAF" stroke-width="3.5" stroke-linecap="round"/>
+<ellipse cx="501" cy="493" rx="19" ry="5" fill="#6B7FCF"/>
+<ellipse cx="501" cy="493" rx="16" ry="4" fill="#2A1A0A"/>
+<path class="steam1" d="M495 488 Q492 478 496 470" fill="none" stroke="#BBBBBB" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+<path class="steam2" d="M507 488 Q510 478 506 470" fill="none" stroke="#BBBBBB" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+<g class="bubble-in">
+<rect x="420" y="148" width="140" height="72" rx="16" fill="white"/>
+<polygon points="438,220 422,242 460,220" fill="white"/>
+<circle cx="455" cy="184" r="8" fill="#1A2340" class="dot1"/>
+<circle cx="480" cy="184" r="8" fill="#1A2340" class="dot2"/>
+<circle cx="505" cy="184" r="8" fill="#1A2340" class="dot3"/>
+</g>
+</svg>

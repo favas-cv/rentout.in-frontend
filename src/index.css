@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme {
+  /* Pastel Purple Palette from the image */
+  --color-primary-container: #CDB4DB;     /* Light Lavender for Active Tab */
+  --color-on-primary-container: #4A4E69;  /* Dark Slate for Active Text */
+  
+  /* Accent Colors */
+  --color-primary: #5D5F86;               /* Slate Blue for CTA Button */
+  --color-secondary: var(--color-primary); /* Mapping for consistency */
+}
+
+/* Hide scrollbar but keep scrollability */
+.scrollbar-hide {
+  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;    /* IE/Edge */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;               /* Chrome/Safari */
+}
