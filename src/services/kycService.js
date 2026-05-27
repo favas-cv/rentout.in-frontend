@@ -56,8 +56,9 @@ export const updateAdminProduct = async (pk, data) => {
 /**
  * Fetch all users for admin view.
  */
-export const fetchAdminUsers = async () => {
-  const res = await api.get('/admin/users/');
+export const fetchAdminUsers = async (url) => {
+  const endpoint = url ? url : '/admin/users/';
+  const res = await api.get(endpoint);
   return res.data;
 };
 

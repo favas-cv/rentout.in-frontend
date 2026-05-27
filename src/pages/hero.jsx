@@ -27,41 +27,53 @@ const HomePage = () => {
   return (
     <main className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="flex flex-col md:flex-row items-center gap-12 px-12 py-16">
-        <div className="flex-1">
+      <section className="flex flex-col md:flex-row items-center gap-6 md:gap-12 px-4 sm:px-6 md:px-12 py-8 md:py-16">
+        <div className="flex-1 w-full">
+          {/* Landscape image — visible on md+ screens */}
           <img
-            src="/images/sofahero.jpg"
+            src="/images/heroimagelandscape.jpg"
             alt="Interior design"
-            className="rounded-2xl shadow-xl object-cover w-full h-[450px]"
+            className="hidden md:block rounded-2xl shadow-xl object-cover w-full h-[450px]"
+          />
+          {/* Phone hero image — visible on small screens only */}
+          <img
+            src="/images/phonehero2.jpg"
+            alt="Interior design mobile"
+            className="block md:hidden rounded-2xl shadow-xl object-cover w-full h-[280px] sm:h-[340px]"
           />
         </div>
 
-        <div className="flex-1 max-w-xl">
-          <h1 className="text-6xl font-bold leading-tight mb-8 text-slate-900">
+        <div className="flex-1 max-w-xl w-full flex flex-col items-center md:items-start text-center md:text-left">
+          {/* Desktop heading */}
+          <h1 className="hidden md:block text-4xl lg:text-6xl font-bold leading-tight mb-8 text-slate-900">
             Furnish your <br /> space without <br /> the commitment
           </h1>
+          {/* Mobile heading */}
+          <h1 className="block md:hidden text-2xl sm:text-4xl font-bold leading-tight mb-4 text-slate-900">
+            Furnish your space
+          </h1>
 
-          {/* Category grid — each button goes to filtered products */}
-          <div className="grid grid-cols-3 gap-4 mb-8">
-            {categories.map((cat) => (
-              <button
-                key={cat.name}
-                onClick={() => handleCategoryClick(cat.name)}
-                className={`flex flex-col items-center justify-center p-4 rounded-[1.5rem] transition-all duration-300 group shadow-sm hover:shadow-lg ${cat.colorBg}`}
-              >
-                <span className={`mb-3 transition-all duration-300 ${cat.colorText} ${cat.hoverText} ${cat.anim}`}>
-                  {cat.icon}
-                </span>
-                <span className={`text-[10px] font-black tracking-widest transition-colors duration-300 text-slate-400 ${cat.hoverText}`}>
-                  {cat.name}
-                </span>
-              </button>
-            ))}
+          <div className="w-full mb-6 md:mb-0">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 mb-6 md:mb-8">
+              {categories.map((cat) => (
+                <button
+                  key={cat.name}
+                  onClick={() => handleCategoryClick(cat.name)}
+                  className={`flex flex-col items-center justify-center p-3 md:p-4 rounded-[1.5rem] transition-all duration-300 group shadow-sm hover:shadow-lg ${cat.colorBg}`}
+                >
+                  <span className={`mb-2 md:mb-3 transition-all duration-300 ${cat.colorText} ${cat.hoverText} ${cat.anim}`}>
+                    {cat.icon}
+                  </span>
+                  <span className="text-xs md:text-sm font-semibold tracking-wide text-slate-800 transition-colors group-hover:text-white">
+                    {cat.name}
+                  </span>
+                </button>
+              ))}
+            </div>
           </div>
-
           <button
             onClick={() => navigate('/room')}
-            className="w-full py-4 bg-[#756477] text-white rounded-full font-semibold hover:bg-[#635465] transition-all"
+            className="w-full py-3 md:py-4 bg-[#756477] text-white rounded-full font-semibold hover:bg-[#635465] transition-all text-sm md:text-base"
           >
             Build Your Room
           </button>
@@ -69,14 +81,39 @@ const HomePage = () => {
       </section>
 
       {/* Trust Bar */}
-      <div className="bg-slate-100 py-3 border-y border-slate-200 overflow-hidden flex whitespace-nowrap gap-12 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-        <div className="animate-marquee flex gap-12">
+      <div className="bg-slate-100 py-3 border-y border-slate-200 overflow-hidden flex whitespace-nowrap text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+        <div className="animate-marquee flex gap-12 pr-12">
           <span>List your furniture &amp; earn</span>
           <span>Seamless Delivery, Zero Heavy Lifting</span>
           <span>Affordability, Flexibility, For Renters</span>
+          <span>Elevate Your Space, Effortlessly</span>
+          <span>Premium Quality, Sustainable Choices</span>
+          <span>No Long-term Contracts, Full Freedom</span>
+          <span>Smart Living for Modern Spaces</span>
+          <span>Design the home of your dreams today</span>
+          
+          {/* Duplicate sequence for seamless loop */}
           <span>List your furniture &amp; earn</span>
+          <span>Seamless Delivery, Zero Heavy Lifting</span>
+          <span>Affordability, Flexibility, For Renters</span>
+          <span>Elevate Your Space, Effortlessly</span>
+          <span>Premium Quality, Sustainable Choices</span>
+          <span>No Long-term Contracts, Full Freedom</span>
+          <span>Smart Living for Modern Spaces</span>
+          <span>Design the home of your dreams today</span>
         </div>
       </div>
+
+      {/* Marquee animation */}
+      <style>{`
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+          animation: marquee 35s linear infinite;
+        }
+      `}</style>
     </main>
   );
 };

@@ -30,6 +30,7 @@ import WishlistPage   from "./pages/wishlist";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import Room3D         from "./pages/Room3D";
 import ChatPage       from "./pages/ChatPage";
+import DocsPage       from "./pages/DocsPage";
 
 // ── Guard & Admin pages ────────────────────────────────────────────────────────
 import ProtectedRoute      from "./components/ProtectedRoute";
@@ -93,6 +94,7 @@ function App() {
           <Route path="/wishlist"         element={<ProtectedRoute><WishlistPage /></ProtectedRoute>} />
           <Route path="/payment-success"  element={<ProtectedRoute><PaymentSuccess /></ProtectedRoute>} />
           <Route path="/room"             element={<Room3D />} />
+          <Route path="/docs"             element={<DocsPage />} />
 
           {/* ── Admin routes (staff only) ────────────────────────── */}
           <Route

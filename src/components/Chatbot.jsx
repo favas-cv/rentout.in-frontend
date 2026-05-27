@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { MessageSquare, X, Send, Loader2, Minus, Smartphone, Sofa, Tv, ExternalLink, ShoppingCart, CheckCircle2 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { MessageSquare, X, Send, Loader2, Minus, Smartphone, Sofa, Tv, ExternalLink, ShoppingCart, CheckCircle2, BookOpen } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -11,6 +11,7 @@ import { addItem, selectCartItems } from '../store/cartSlice';
 import ChatbotIcon from '../assets/ChatbotIcon.svg?react';
 
 const Chatbot = () => {
+  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
@@ -99,7 +100,7 @@ const Chatbot = () => {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-[9999] flex flex-col items-end">
+    <div className="fixed bottom-6 right-6 z-[9999] flex flex-col items-end gap-3">
       
       {/* Chat Window */}
       {isOpen && (
@@ -181,6 +182,20 @@ const Chatbot = () => {
             </button>
           </form>
         </div>
+      )}
+
+      {/* Docs Floating Button */}
+      {location.pathname !== '/docs' && (
+        <Link
+          to="/docs"
+          className="w-16 h-16 bg-[#635465] text-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all hover:scale-110 active:scale-95 group relative border border-white/10"
+          title="Project Docs"
+        >
+          <BookOpen size={32} className="group-hover:rotate-6 transition-transform" />
+          <span className="absolute right-20 bg-slate-900 text-white text-xs font-semibold px-3 py-1.5 rounded-lg border border-slate-800 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-md">
+            Project Docs & Report
+          </span>
+        </Link>
       )}
 
       {/* Floating Button */}

@@ -203,19 +203,19 @@ const OwnerDashboard = () => {
   );
 
   if (statsError || productsError || ordersError) return (
-    <div className="flex flex-col justify-center items-center h-screen gap-6 p-6 text-center">
-      <div className="w-20 h-20 bg-red-50 rounded-full flex items-center justify-center text-red-500">
-        <X size={40} />
+    <div className="flex flex-col justify-center items-center h-screen gap-4 sm:gap-6 p-4 sm:p-6 text-center">
+      <div className="w-16 h-16 sm:w-20 sm:h-20 bg-red-50 rounded-full flex items-center justify-center text-red-500">
+        <X size={32} />
       </div>
       <div className="space-y-2">
-        <h2 className="text-2xl font-black text-slate-800">Something went wrong</h2>
-        <p className="text-slate-500 max-w-md">
+        <h2 className="text-xl sm:text-2xl font-black text-slate-800">Something went wrong</h2>
+        <p className="text-slate-500 max-w-md text-sm">
           {statsErr?.message || productsErr?.message || ordersErr?.message || "Failed to connect to the server. Please check your connection."}
         </p>
       </div>
       <button 
         onClick={() => window.location.reload()}
-        className="bg-[#635465] text-white px-8 py-3 rounded-2xl font-bold shadow-lg shadow-[#635465]/20 hover:scale-105 transition-all"
+        className="bg-[#635465] text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-2xl font-bold shadow-lg shadow-[#635465]/20 hover:scale-105 transition-all text-sm"
       >
         Try Again
       </button>
@@ -224,42 +224,43 @@ const OwnerDashboard = () => {
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] pb-20">
-      <div className="bg-white border-b border-slate-100 pt-10 pb-6 px-6 mb-8">
+      <div className="bg-white border-b border-slate-100 pt-6 sm:pt-8 md:pt-10 pb-4 sm:pb-6 px-4 sm:px-6 mb-6 sm:mb-8">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+          <div className="flex flex-col gap-4 sm:gap-6">
             <div>
-              <div className="flex items-center gap-3 mb-2">
+              <div className="flex items-center gap-3 mb-2 flex-wrap">
                 <span className="text-xs font-bold text-slate-400 uppercase tracking-widest bg-slate-50 px-3 py-1 rounded-full">
                   Welcome back, {displayName}
                 </span>
                 {user?.email && (
-                  <span className="text-[10px] text-slate-300 font-medium">{user.email}</span>
+                  <span className="text-[10px] text-slate-300 font-medium hidden sm:inline">{user.email}</span>
                 )}
               </div>
-              <h1 className="text-3xl font-black text-slate-900 tracking-tight flex items-center gap-3">
-                <LayoutDashboard className="text-[#635465]" />
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 tracking-tight flex items-center gap-2 sm:gap-3">
+                <LayoutDashboard className="text-[#635465]" size={24} />
                 Owner Dashboard
               </h1>
             </div>
 
-            <div className="flex bg-slate-100 p-1.5 rounded-2xl w-full md:w-auto">
+            {/* Tab bar — scrollable on mobile */}
+            <div className="flex bg-slate-100 p-1 sm:p-1.5 rounded-xl sm:rounded-2xl w-full overflow-x-auto scrollbar-hide">
               <button 
                 onClick={() => setActiveTab('overview')}
-                className={`flex-1 md:flex-none px-6 py-2.5 rounded-xl text-xs font-black transition-all flex items-center justify-center gap-2 ${activeTab === 'overview' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
+                className={`flex-1 min-w-[100px] px-3 sm:px-6 py-2 sm:py-2.5 rounded-lg sm:rounded-xl text-[10px] sm:text-xs font-black transition-all flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap ${activeTab === 'overview' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
               >
                 <LayoutDashboard size={14} />
                 Overview
               </button>
               <button 
                 onClick={() => setActiveTab('products')}
-                className={`flex-1 md:flex-none px-6 py-2.5 rounded-xl text-xs font-black transition-all flex items-center justify-center gap-2 ${activeTab === 'products' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
+                className={`flex-1 min-w-[100px] px-3 sm:px-6 py-2 sm:py-2.5 rounded-lg sm:rounded-xl text-[10px] sm:text-xs font-black transition-all flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap ${activeTab === 'products' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
               >
                 <Package size={14} />
                 Inventory
               </button>
               <button 
                 onClick={() => setActiveTab('orders')}
-                className={`flex-1 md:flex-none px-6 py-2.5 rounded-xl text-xs font-black transition-all flex items-center justify-center gap-2 ${activeTab === 'orders' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
+                className={`flex-1 min-w-[100px] px-3 sm:px-6 py-2 sm:py-2.5 rounded-lg sm:rounded-xl text-[10px] sm:text-xs font-black transition-all flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap ${activeTab === 'orders' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
               >
                 <ShoppingBag size={14} />
                 Orders
@@ -269,11 +270,11 @@ const OwnerDashboard = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {activeTab === 'overview' && (
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
             <StatsGrid stats={stats} products={productsList} ordersData={ordersData} orders={orders} />
-            <div className="grid grid-cols-1 gap-8 mt-8">
+            <div className="grid grid-cols-1 gap-6 sm:gap-8 mt-6 sm:mt-8">
               <OwnerOrders orders={orders.slice(0, 5)} onSelectOrder={setSelectedOrder} />
             </div>
           </div>

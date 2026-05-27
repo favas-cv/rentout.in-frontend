@@ -17,11 +17,13 @@ const AdminUsers = () => {
   const queryClient = useQueryClient();
   const [searchTerm, setSearchTerm] = useState('');
   const [roleFilter, setRoleFilter] = useState('ALL'); // ALL, OWNERS, RENTERS, ACTIVE, BLOCKED
+  const [pageUrl, setPageUrl] = useState(null);
 
-  // Fetch users list
+  // Fetch users list with pagination support
   const { data: usersData, isLoading, error } = useQuery({
-    queryKey: ['admin-users-list'],
-    queryFn: fetchAdminUsers,
+    queryKey: ['admin-users-list', pageUrl],
+    queryFn: () => fetchAdminUsers(pageUrl),
+    keepPreviousData: true,
   });
 
   // Extract users safely
@@ -40,10 +42,10 @@ const AdminUsers = () => {
     }
   });
 
-  const handleToggleActive = (id, currentActive) => {
+  const handleToggleActive = (id, currentLive) => {
     updateUserMutation.mutate({
       id,
-      data: { is_active: !currentActive }
+      data: { is_live: !currentLive }
     });
   };
 
@@ -57,10 +59,10 @@ const AdminUsers = () => {
         return userItem.is_owner === true;
       case 'RENTERS':
         return userItem.is_owner === false;
-      case 'ACTIVE':
-        return userItem.is_active === true;
-      case 'BLOCKED':
-        return userItem.is_active === false;
+      case 'LIVE':
+        return userItem.is_live === true;
+      case 'SUSPENDED':
+        return userItem.is_live === false;
       case 'ALL':
       default:
         return true;
@@ -72,8 +74,8 @@ const AdminUsers = () => {
     total: usersList.length,
     owners: usersList.filter(u => u.is_owner === true).length,
     renters: usersList.filter(u => u.is_owner === false).length,
-    active: usersList.filter(u => u.is_active === true).length,
-    blocked: usersList.filter(u => u.is_active === false).length,
+    active: usersList.filter(u => u.is_live === true).length,
+    blocked: usersList.filter(u => u.is_live === false).length,
   };
 
   return (
@@ -130,7 +132,7 @@ const AdminUsers = () => {
 
             {/* Filter Tabs */}
             <div className="flex gap-1.5 overflow-x-auto pb-2 md:pb-0 hide-scrollbar">
-              {['ALL', 'OWNERS', 'RENTERS', 'ACTIVE', 'BLOCKED'].map(tab => (
+              {['ALL', 'OWNERS', 'RENTERS', 'LIVE', 'SUSPENDED'].map(tab => (
                 <button
                   key={tab}
                   onClick={() => setRoleFilter(tab)}
@@ -223,19 +225,17 @@ const AdminUsers = () => {
                           {/* Status Badge */}
                           <td className="p-6 text-center">
                             <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${
-                              userItem.is_active 
-                                ? 'bg-emerald-50 text-emerald-600' 
-                                : 'bg-rose-50 text-rose-600'
+                              userItem.is_live ? 'bg-emerald-50 text-emerald-600' : 'bg-rose-50 text-rose-600'
                             }`}>
-                              {userItem.is_active ? 'Active' : 'Suspended'}
+                              {userItem.is_live ? 'Active' : 'Suspended'}
                             </span>
                           </td>
 
                           {/* Block/Unblock Button */}
                           <td className="p-6 text-right">
-                            {userItem.is_active ? (
+                            {userItem.is_live ? (
                               <button
-                                onClick={() => handleToggleActive(userItem.id, userItem.is_active)}
+                                onClick={() => handleToggleActive(userItem.id, userItem.is_live)}
                                 disabled={isMutating}
                                 className="px-4 py-2 bg-rose-50 hover:bg-rose-100 text-rose-600 font-extrabold text-[10px] uppercase tracking-widest rounded-xl transition-all inline-flex items-center gap-1.5"
                               >
@@ -244,7 +244,7 @@ const AdminUsers = () => {
                               </button>
                             ) : (
                               <button
-                                onClick={() => handleToggleActive(userItem.id, userItem.is_active)}
+                                onClick={() => handleToggleActive(userItem.id, userItem.is_live)}
                                 disabled={isMutating}
                                 className="px-4 py-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-600 font-extrabold text-[10px] uppercase tracking-widest rounded-xl transition-all inline-flex items-center gap-1.5"
                               >
@@ -261,6 +261,31 @@ const AdminUsers = () => {
               </table>
             </div>
           )}
+          {/* Pagination Controls */}
+          <div className="flex justify-center mt-6 gap-4">
+            <button
+              onClick={() => setPageUrl(usersData?.previous)}
+              disabled={!usersData?.previous}
+              className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
+                usersData?.previous
+                  ? 'bg-[#635465] text-white hover:bg-[#756477]'
+                  : 'bg-slate-200 text-slate-500 cursor-not-allowed'
+              }`}
+            >
+              Previous
+            </button>
+            <button
+              onClick={() => setPageUrl(usersData?.next)}
+              disabled={!usersData?.next}
+              className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
+                usersData?.next
+                  ? 'bg-[#635465] text-white hover:bg-[#756477]'
+                  : 'bg-slate-200 text-slate-500 cursor-not-allowed'
+              }`}
+            >
+              Next
+            </button>
+          </div>
         </div>
       </div>
     </div>
